@@ -14,7 +14,10 @@ body {
 }
 
 a {
-  color: #0070f3;
+  /* color: #0070f3;
+  color: #fcba03;
+  color: #00e293; */
+  color: #6b5849;
   text-decoration: none;
 }
 
