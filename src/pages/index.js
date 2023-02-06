@@ -22,7 +22,7 @@ export default function Home() {
           {/* I am constantly looking for opportunities to enhance my skills and take on new challenges. */}
           If you are interested in connecting with me, you can find me on <a href="https://www.linkedin.com/in/xtchow/">LinkedIn</a>
           , or drop me an email at <a href="mailto:sarah@xtchow.com">sarah@xtchow.com</a>
-          , though the best way to reach me is through <a href="https://t.me/xtchow">Telegram</a>
+          , though the fastest and best way to reach me is through <a href="https://t.me/xtchow">Telegram</a>
           . You can also check out some of my work on <a href="https://github.com/xtchow">GitHub</a>.
         </p>
         <p className={description}>
