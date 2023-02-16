@@ -1,5 +1,9 @@
-console.log('Hello world.');
+// console.log('Hello world.');
 
 export default function Home() {
-  return (from export);
+  return (
+    <>
+      <p>from export: Hello world~!!</p>
+    </>
+  );
 };
