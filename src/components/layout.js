@@ -14,7 +14,7 @@ export default function Layout({ children, home }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
-        <Link href="/" className={header}>
+        <Link href="/resume" className={header}>
           <Image
             priority
             src="/images/profile.jpg"
