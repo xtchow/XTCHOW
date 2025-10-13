@@ -10,7 +10,7 @@ export default function Home() {
       <Head>
         <title>xtchow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/onion.png" />
       </Head>
       <main className={headingMd}>
         {/* <Link href="/posts/first-post">Read this page!</Link> */}
