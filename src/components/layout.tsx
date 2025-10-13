@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import layoutStyles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -18,9 +17,6 @@ export default function Layout({ children, home }: LayoutProps) {
   const imgSize = home ? 144 : 108;
   return (
     <div className={layoutStyles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <header>
         <Link href={r0328} target="_blank" className={layoutStyles.header}>
           <Image
