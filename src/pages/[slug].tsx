@@ -1,10 +1,14 @@
-// pages/[slug].js
+import type { GetServerSideProps } from 'next';
 
-export async function getServerSideProps(context) {
-  const { slug } = context.params;
+type RedirectMap = {
+  [key: string]: string;
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { slug } = context.params as { slug: string };
 
   // your redirect map:
-  const redirects = {
+  const redirects: RedirectMap = {
     linkedin: "https://www.linkedin.com/in/xtchow/",
     github: "https://github.com/xtchow",
     // resume: "/files/resume.pdf",
@@ -26,7 +30,7 @@ export async function getServerSideProps(context) {
   return {
     notFound: true,
   };
-}
+};
 
 export default function RedirectPage() {
   return null; // never actually renders because of the redirect
