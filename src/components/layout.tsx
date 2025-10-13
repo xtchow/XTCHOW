@@ -21,7 +21,7 @@ export default function Layout({ children, home }: LayoutProps) {
         <Link href={r0328} target="_blank" className={layoutStyles.header}>
           <Image
             priority
-            src="/images/profile.jpg"
+            src="/images/profile.png"
             className={utilStyles.borderCircle}
             height={imgSize}
             width={imgSize}
