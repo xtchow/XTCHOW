@@ -1,6 +1,7 @@
 import homeStyles from '@/styles/Home.module.css';
 import Layout from '@/components/layout';
 import utilStyles from '@/styles/utils.module.css';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -20,7 +21,8 @@ export default function Home() {
           Send the challenge to <a href="https://www.chess.com/member/mercurie_opponent">@mercurie_opponent</a> on Chess.com.
         </p>
       </main>
-      <footer></footer>
+
+      <Footer />
     </Layout>
   );
 }

@@ -7,6 +7,7 @@ type RedirectMap = {
 const redirects: RedirectMap = {
   linkedin: "https://www.linkedin.com/in/xtchow/",
   github: "https://github.com/xtchow",
+  email: "mailto:sarah@xtchow.com",
   // resume: "/files/resume.pdf",
   // twitter: "https://twitter.com/xtchow",
 };
