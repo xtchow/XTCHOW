@@ -4,107 +4,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
-import {
-  siJavascript,
-  siTypescript,
-  siRust,
-  siReact,
-  siNextdotjs,
-  siRedux,
-  siExpo,
-  siFirebase,
-  siMobx,
-  siD3,
-  siNodedotjs,
-  siExpress,
-  siPostgresql,
-  siMongodb,
-  siSqlite,
-  siDocker,
-  siKubernetes,
-  siWebpack,
-  siVite,
-  siJest,
-  siCypress,
-  siBootstrap,
-  siSass,
-  siTailwindcss,
-  siPassport,
-  siWebassembly,
-} from "simple-icons";
-import {
-  SiJavascript,
-  SiTypescript,
-  SiRust,
-  SiReact,
-  SiNextdotjs,
-  SiRedux,
-  SiExpo,
-  SiFirebase,
-  SiMobx,
-  SiD3Dotjs,
-  SiNodedotjs,
-  SiExpress,
-  SiPostgresql,
-  SiMongodb,
-  SiSqlite,
-  SiDocker,
-  SiKubernetes,
-  SiWebpack,
-  SiVite,
-  SiJest,
-  SiCypress,
-  SiBootstrap,
-  SiSass,
-  SiTailwindcss,
-  SiPassport,
-  SiWebassembly,
-} from "react-icons/si";
-import type { IconType } from "react-icons";
+import { getTechConfig, darkenColor, needsInvertedColor } from "@/lib/techIcons";
 import "./ProjectFilter.scss";
 
-// Tech config for filter buttons
-const techFilterMap: Record<string, { color: string; icon: IconType }> = {
-  "JavaScript": { color: `#${siJavascript.hex}`, icon: SiJavascript },
-  "TypeScript": { color: `#${siTypescript.hex}`, icon: SiTypescript },
-  "Rust": { color: `#${siRust.hex}`, icon: SiRust },
-  "React": { color: `#${siReact.hex}`, icon: SiReact },
-  "React Native": { color: `#${siReact.hex}`, icon: SiReact },
-  "Next.js": { color: `#${siNextdotjs.hex}`, icon: SiNextdotjs },
-  "Redux": { color: `#${siRedux.hex}`, icon: SiRedux },
-  "Redux Toolkit": { color: `#${siRedux.hex}`, icon: SiRedux },
-  "Expo": { color: `#${siExpo.hex}`, icon: SiExpo },
-  "Firebase": { color: `#${siFirebase.hex}`, icon: SiFirebase },
-  "Firestore": { color: `#${siFirebase.hex}`, icon: SiFirebase },
-  "MobX": { color: `#${siMobx.hex}`, icon: SiMobx },
-  "D3.js": { color: `#${siD3.hex}`, icon: SiD3Dotjs },
-  "Node.js": { color: `#${siNodedotjs.hex}`, icon: SiNodedotjs },
-  "Express": { color: `#${siExpress.hex}`, icon: SiExpress },
-  "PostgreSQL": { color: `#${siPostgresql.hex}`, icon: SiPostgresql },
-  "MongoDB": { color: `#${siMongodb.hex}`, icon: SiMongodb },
-  "SQLite": { color: `#${siSqlite.hex}`, icon: SiSqlite },
-  "Docker": { color: `#${siDocker.hex}`, icon: SiDocker },
-  "Kubernetes": { color: `#${siKubernetes.hex}`, icon: SiKubernetes },
-  "Webpack": { color: `#${siWebpack.hex}`, icon: SiWebpack },
-  "Vite": { color: `#${siVite.hex}`, icon: SiVite },
-  "Jest": { color: `#${siJest.hex}`, icon: SiJest },
-  "Cypress": { color: `#${siCypress.hex}`, icon: SiCypress },
-  "Bootstrap": { color: `#${siBootstrap.hex}`, icon: SiBootstrap },
-  "SASS": { color: `#${siSass.hex}`, icon: SiSass },
-  "Tailwind CSS": { color: `#${siTailwindcss.hex}`, icon: SiTailwindcss },
-  "Passport.js": { color: `#${siPassport.hex}`, icon: SiPassport },
-  "WebAssembly": { color: `#${siWebassembly.hex}`, icon: SiWebassembly },
-  "React Navigation": { color: `#${siReact.hex}`, icon: SiReact },
-  "React Native Maps": { color: `#${siReact.hex}`, icon: SiReact },
-};
-
-// Fallback colors
-const FALLBACK_COLORS: Record<string, string> = {
-  "SWR": "#000000",
-  "NextAuth.js": "#000000",
-};
-
-// Category definitions
 const techCategories: { name: string; techs: string[] }[] = [
   {
     name: "Languages",
@@ -147,23 +49,6 @@ const filteredCategories = techCategories
   }))
   .filter((cat) => cat.techs.length > 0);
 
-function darkenColor(hex: string, percent: number): string {
-  const num = parseInt(hex.replace("#", ""), 16);
-  const r = Math.max(0, (num >> 16) - Math.round(255 * percent));
-  const g = Math.max(0, ((num >> 8) & 0x00ff) - Math.round(255 * percent));
-  const b = Math.max(0, (num & 0x0000ff) - Math.round(255 * percent));
-  return `rgb(${r}, ${g}, ${b})`;
-}
-
-function needsInvertedColor(hex: string): boolean {
-  const num = parseInt(hex.replace("#", ""), 16);
-  const r = num >> 16;
-  const g = (num >> 8) & 0x00ff;
-  const b = num & 0x0000ff;
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance < 0.15;
-}
-
 export function ProjectFilter() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -186,8 +71,8 @@ export function ProjectFilter() {
   const isDark = mounted && resolvedTheme === "dark";
 
   const getButtonStyle = (tech: string, isActive: boolean) => {
-    const config = techFilterMap[tech];
-    let baseColor = config?.color || FALLBACK_COLORS[tech] || "#6B7280";
+    const config = getTechConfig(tech);
+    let baseColor = config.color;
 
     if (isDark && needsInvertedColor(baseColor)) {
       baseColor = "#ffffff";
@@ -208,11 +93,11 @@ export function ProjectFilter() {
   };
 
   const renderTechButton = (tech: string) => {
-    const config = techFilterMap[tech];
-    const IconComponent = config?.icon;
+    const config = getTechConfig(tech);
+    const IconComponent = config.icon;
     const isActive = currentTech === tech;
     const style = getButtonStyle(tech, isActive);
-    let iconColor = config?.color || FALLBACK_COLORS[tech] || "#6B7280";
+    let iconColor = config.color;
     if (isDark && needsInvertedColor(iconColor)) {
       iconColor = "#ffffff";
     } else if (!isDark) {

@@ -67,7 +67,7 @@ export const resume: Resume = {
     },
     {
       name: "Frontend",
-      skills: ["React", "React Native", "Next.js", "Redux", "D3.js", "Tailwind", "SASS"],
+      skills: ["React", "React Native", "Next.js", "Redux", "D3.js", "Tailwind CSS", "SASS"],
     },
     {
       name: "Backend",

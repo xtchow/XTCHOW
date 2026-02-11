@@ -1,5 +1,6 @@
 import { resume } from "@/data/resume";
 import { Tag } from "@/components/ui/Tag";
+import { RESUME_PATH } from "@/lib/constants";
 import "./resume.scss";
 
 export const metadata = {
@@ -17,7 +18,7 @@ export default function ResumePage() {
               <h1>{resume.name}</h1>
               <p className="resume-page__role">{resume.title}</p>
             </div>
-            <a href="/Chow, Sarah 260107.pdf" download className="resume-page__download">
+            <a href={RESUME_PATH} download className="resume-page__download">
               Download PDF
             </a>
           </div>

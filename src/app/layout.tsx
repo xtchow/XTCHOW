@@ -33,10 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${robotoMono.variable}`} style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <body className={`${inter.variable} ${robotoMono.variable}`}>
         <ThemeProvider>
           <Header />
-          <div style={{ flex: 1 }}>{children}</div>
+          <div className="flex-1">{children}</div>
           <Footer />
         </ThemeProvider>
       </body>

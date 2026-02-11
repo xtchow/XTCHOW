@@ -1,5 +1,6 @@
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { HiDocumentArrowDown } from "react-icons/hi2";
+import { RESUME_PATH } from "@/lib/constants";
 import "./Footer.scss";
 
 export function Footer() {
@@ -13,7 +14,7 @@ export function Footer() {
         </p>
         <div className="footer__links">
           <a
-            href="/Chow, Sarah 260107.pdf"
+            href={RESUME_PATH}
             download
             className="footer__link"
           >
