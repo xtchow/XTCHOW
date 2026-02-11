@@ -4,12 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+.yarn/install-state.gz
 
 # testing
 /coverage
-cypress/videos
-cypress/screenshots
-cypress/downloads
 
 # next.js
 /.next/
@@ -26,7 +24,6 @@ cypress/downloads
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
 
 # local env files
 .env*.local
@@ -34,4 +31,12 @@ yarn-error.log*
 # vercel
 .vercel
 
-private/
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# activity log
+ACTIVITY_LOG.md
+
+# personal notes
+backlog.md

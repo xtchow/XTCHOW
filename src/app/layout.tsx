@@ -1,67 +1,45 @@
-import type { Metadata } from 'next';
-import { Roboto_Mono } from 'next/font/google';
-import '@/styles/globals.scss';
-import {
-  SITE_NAME,
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  SITE_URL,
-  PROFILE_IMAGE,
-  IMAGE_SIZE_HOME,
-} from '@/config/constants';
+import type { Metadata } from "next";
+import { Inter, Roboto_Mono } from "next/font/google";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import "./globals.scss";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto-mono',
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: SITE_TITLE,
-  description: SITE_DESCRIPTION,
-  keywords: ['software engineer', 'developer', 'Sarah Chow', 'xtchow'],
-  authors: [{ name: SITE_NAME }],
-  creator: SITE_NAME,
+  title: "Sarah Chow | Software Engineer",
+  description: "Senior Software Engineer building performant web and mobile applications",
   icons: {
-    icon: '/onion.png',
-  },
-  metadataBase: new URL(SITE_URL),
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: SITE_URL,
-    siteName: 'xtchow',
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: PROFILE_IMAGE,
-        width: IMAGE_SIZE_HOME,
-        height: IMAGE_SIZE_HOME,
-        alt: SITE_NAME,
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary',
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: [PROFILE_IMAGE],
-  },
-  robots: {
-    index: true,
-    follow: true,
+    icon: "/images/onion.png",
+    apple: "/images/onion.png",
   },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className={robotoMono.className}>
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${robotoMono.variable}`} style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        <ThemeProvider>
+          <Header />
+          <div style={{ flex: 1 }}>{children}</div>
+          <Footer />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

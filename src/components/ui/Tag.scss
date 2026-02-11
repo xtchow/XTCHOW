@@ -1,0 +1,28 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  white-space: nowrap;
+
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  &--tech {
+    background-color: var(--color-accent-subtle);
+    color: var(--color-text-primary);
+  }
+
+  &--category {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}

@@ -1,0 +1,46 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.footer {
+  margin-top: auto;
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--color-border);
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  &__copyright {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}

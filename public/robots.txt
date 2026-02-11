@@ -1,5 +1,0 @@
-# robots.txt for xtchow.com
-User-agent: *
-Allow: /
-
-Sitemap: https://xtchow.com/sitemap.xml
