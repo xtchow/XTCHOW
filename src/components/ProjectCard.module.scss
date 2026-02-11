@@ -1,0 +1,51 @@
+@use '../styles/variables' as *;
+
+.card {
+  display: block;
+  padding: $spacing-lg;
+  border: 1px solid $color-grey-border;
+  border-radius: $border-radius-md;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    border-color: $color-grey;
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-sm;
+  gap: $spacing-md;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: $color-black;
+}
+
+.timeframe {
+  font-size: $font-size-sm;
+  color: $color-grey-light;
+  white-space: nowrap;
+}
+
+.description {
+  margin: 0 0 $spacing-md;
+  font-size: $font-size-md;
+  color: $color-grey;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}

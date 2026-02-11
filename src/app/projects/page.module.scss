@@ -1,0 +1,23 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  width: 100%;
+}
+
+.heading {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  margin: 0 0 $spacing-xl;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+
+  @include tablet-and-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
