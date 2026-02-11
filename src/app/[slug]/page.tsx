@@ -1,16 +1,5 @@
 import { redirect, notFound } from 'next/navigation';
-
-type RedirectMap = {
-  [key: string]: string;
-};
-
-const redirects: RedirectMap = {
-  linkedin: "https://www.linkedin.com/in/xtchow/",
-  github: "https://github.com/xtchow",
-  email: "mailto:sarah@xtchow.com",
-  // resume: "/files/resume.pdf",
-  // twitter: "https://twitter.com/xtchow",
-};
+import { REDIRECTS } from '@/config/constants';
 
 export default async function RedirectPage({
   params
@@ -18,7 +7,7 @@ export default async function RedirectPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
-  const destination = redirects[slug];
+  const destination = REDIRECTS[slug];
 
   if (destination) {
     redirect(destination);

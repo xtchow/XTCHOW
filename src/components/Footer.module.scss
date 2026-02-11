@@ -1,0 +1,23 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.footer {
+  @include flex-center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.socialLink {
+  text-decoration: none;
+  color: $color-grey;
+  @include transition(color);
+
+  &:hover {
+    color: $color-black;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
