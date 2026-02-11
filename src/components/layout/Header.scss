@@ -1,0 +1,75 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  &__logo {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--color-text-primary);
+    text-decoration: none;
+
+    .mono {
+      font-family: var(--font-mono);
+      color: var(--color-accent);
+    }
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include respond-to("md") {
+      display: block;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  &__nav-link {
+    position: relative;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    padding-bottom: var(--space-1);
+
+    &:hover {
+      color: var(--color-text-primary);
+    }
+
+    &--active {
+      color: var(--color-text-primary);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: var(--color-accent);
+      }
+    }
+  }
+}

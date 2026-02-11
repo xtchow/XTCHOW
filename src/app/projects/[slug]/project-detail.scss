@@ -1,0 +1,87 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.project-detail {
+  padding-block: var(--space-12);
+
+  &__back {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    margin-bottom: var(--space-8);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  &__header {
+    max-width: $max-width-prose;
+    margin-bottom: var(--space-6);
+  }
+
+  &__category {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  &__header h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  &__description {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+
+  &__content {
+    max-width: $max-width-prose;
+  }
+
+  &__section {
+    margin-bottom: var(--space-8);
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-3);
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__link {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

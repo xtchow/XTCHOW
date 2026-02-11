@@ -1,19 +1,40 @@
-import Layout from '@/components/layout';
-import ProjectCard from '@/components/ProjectCard';
-import { projects } from '@/data/projects';
-import styles from './page.module.scss';
+import { Suspense } from "react";
+import { projects } from "@/data/projects";
+import { ProjectFilter } from "@/components/projects/ProjectFilter";
+import { ProjectGrid } from "@/components/projects/ProjectGrid";
+import "./projects.scss";
 
-export default function ProjectsPage() {
+export const metadata = {
+  title: "Experience | Sarah Chow",
+  description: "Work experience and software engineering projects",
+};
+
+interface ProjectsPageProps {
+  searchParams: Promise<{ tech?: string }>;
+}
+
+export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
+  const params = await searchParams;
+  const tech = params.tech;
+
+  const filteredProjects = tech
+    ? projects.filter((p) => p.techStack.includes(tech))
+    : projects;
+
   return (
-    <Layout>
-      <div className={styles.container}>
-        <h2 className={styles.heading}>Projects</h2>
-        <div className={styles.grid}>
-          {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
-        </div>
+    <main className="projects-page">
+      <div className="container">
+        <header className="projects-page__header">
+          <h1>Experience</h1>
+          <p>Work experience and projects I&apos;ve built.</p>
+        </header>
+
+        <Suspense fallback={null}>
+          <ProjectFilter />
+        </Suspense>
+
+        <ProjectGrid projects={filteredProjects} />
       </div>
-    </Layout>
+    </main>
   );
 }
